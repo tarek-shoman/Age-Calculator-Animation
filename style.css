@@ -1,0 +1,241 @@
+:root {
+  --color-bg: #1a1d21;
+  --color-card: #22262a;
+  --color-accent: #00e6c3;
+  --color-text: #ffffff;
+  --color-text-muted: #8b8b8b;
+  --color-error: #ff5757;
+  --font-weight-regular: 400;
+  --font-weight-bold: 700;
+  --font-weight-extra-bold: 800;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  transition: all 0.3s ease;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: 'Poppins', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.container {
+  width: 100%;
+  max-width: 400px;
+}
+
+.card {
+  background: var(--color-card);
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
+  animation: borderGlow 2s linear infinite;
+}
+
+.card__form {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.card__inputContainer {
+  position: relative;
+}
+
+.card__label {
+  display: block;
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: var(--color-text-muted);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.card__input {
+  width: 100%;
+  background: var(--color-bg);
+  border: 1px solid #2f353a;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 18px;
+  color: var(--color-text);
+  font-weight: var(--font-weight-bold);
+  transition: all 0.3s ease;
+}
+
+.card__input:hover {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 4px rgba(0, 230, 195, 0.1);
+}
+
+.card__input:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 4px rgba(0, 230, 195, 0.2);
+}
+
+.card__input--error {
+  border-color: var(--color-error);
+  animation: shake 0.5s ease-in-out;
+}
+
+.card__errorMessage {
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  font-size: 11px;
+  color: var(--color-error);
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: all 0.3s ease;
+}
+
+.card__input--error + .card__errorMessage {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card__separator {
+  position: relative;
+  height: 1px;
+  background: #2f353a;
+  margin: 32px 0;
+}
+
+.card__button {
+  font-family: inherit;
+  font-weight: var(--font-weight-bold);
+  position: absolute;
+  margin: 10px;
+  left: 87%;
+  top: 88%;
+  transform: translate(-50%, -50%);
+  width: 48px;
+  height: 18px;
+  border-radius: 5px;
+  border: none;
+  background: var(--color-accent);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.card__button:hover {
+  box-shadow: 0 0 20px rgba(0, 230, 195, 0.4);
+}
+
+
+.card__result {
+  text-align: center;
+  font-size: 18px;
+  font-weight: var(--font-weight-extra-bold);
+  font-style: italic;
+  line-height: 1.2;
+}
+
+.card__resultNumber {
+  color: var(--color-accent);
+  margin-right: 2px;
+  margin-top: 25px;
+  display: inline-block;
+  min-width: 20px;
+  position: relative;
+}
+
+.card__resultNumber::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--color-accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s ease;
+}
+
+.card__resultNumber.animate::after {
+  transform: scaleX(1);
+}
+
+@keyframes borderGlow {
+  0%, 100% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 0%;
+  }
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  20%, 60% {
+    transform: translateX(-5px);
+  }
+  40%, 80% {
+    transform: translateX(5px);
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: 24px;
+  }
+
+  .card__form {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+
+  .card__input {
+    padding: 8px;
+    font-size: 16px;
+  }
+
+  .card__result {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 350px) {
+  .card {
+    padding: 16px;
+  }
+
+  .card__form {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4px;
+  }
+
+  .card__input {
+    padding: 6px;
+    font-size: 14px;
+  }
+
+  .card__result {
+    font-size: 14px;
+  }
+}
