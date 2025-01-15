@@ -5,15 +5,15 @@ const yearInput = document.querySelector('#year');
 const resultYears = document.querySelector('.years');
 const resultMonths = document.querySelector('.months');
 const resultDays = document.querySelector('.days');
-const submitButton = document.querySelector('.card__button');
+const submitButton = document.querySelector('.card_button');
 
 const validateInput = (input, min, max) => {
   const value = parseInt(input.value);
   if (isNaN(value) || value < min || value > max) {
-    input.classList.add('card__input--error');
+    input.classList.add('card_input--error');
     return false;
   }
-  input.classList.remove('card__input--error');
+  input.classList.remove('card_input--error');
   return true;
 };
 
@@ -66,7 +66,7 @@ const resetResults = () => {
 
 const handleInput = (input) => {
   input.addEventListener('input', () => {
-    input.classList.remove('card__input--error');
+    input.classList.remove('card_input--error');
   });
 };
 
@@ -95,7 +95,7 @@ form.addEventListener('submit', (e) => {
   const birthDate = new Date(yearInput.value, monthInput.value - 1, dayInput.value);
   const age = calculateAge(birthDate);
 
-  const resultElement = document.querySelector('.card__result');
+  const resultElement = document.querySelector('.card_result');
   resultElement.style.animation = 'none';
   resultElement.offsetHeight;
   resultElement.style.animation = null;

@@ -20,7 +20,7 @@ body {
   background: var(--color-bg);
   color: var(--color-text);
   font-family: 'Poppins', sans-serif;
-  min-height: 100vh;
+  min-height: 100vh; 
   display: flex;
   align-items: center;
   justify-content: center;
@@ -28,22 +28,19 @@ body {
 }
 
 .container {
-  width: 100%;
   max-width: 400px;
 }
 
 .card {
   background: var(--color-card);
-  border-radius: 16px;
-  padding: 32px;
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+  border-radius: 6px;
+  padding: 30px;
+  box-shadow: 0 20px 20px rgba(0, 0, 0, 0.062);
   position: relative;
-  overflow: hidden;
 }
 
 .card::before {
   content: '';
-  position: relative;
   top: 0;
   left: 0;
   width: 100%;
@@ -52,18 +49,18 @@ body {
   animation: borderGlow 2s linear infinite;
 }
 
-.card__form {
+.card_form {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
   margin-bottom: 32px;
 }
 
-.card__inputContainer {
+.card_inputContainer {
   position: relative;
 }
 
-.card__label {
+.card_label {
   display: block;
   font-size: 12px;
   letter-spacing: 2px;
@@ -72,7 +69,7 @@ body {
   text-transform: uppercase;
 }
 
-.card__input {
+.card_input {
   width: 100%;
   background: var(--color-bg);
   border: 1px solid #2f353a;
@@ -84,55 +81,37 @@ body {
   transition: all 0.3s ease;
 }
 
-.card__input:hover {
+.card_input:hover {
   border-color: var(--color-accent);
   box-shadow: 0 0 0 4px rgba(0, 230, 195, 0.1);
 }
 
-.card__input:focus {
+.card_input:focus {
   outline: none;
   border-color: var(--color-accent);
   box-shadow: 0 0 0 4px rgba(0, 230, 195, 0.2);
 }
 
-.card__input--error {
+.card_input--error {
   border-color: var(--color-error);
   animation: shake 0.5s ease-in-out;
 }
 
-.card__errorMessage {
-  position: absolute;
-  bottom: -20px;
-  left: 0;
-  font-size: 11px;
-  color: var(--color-error);
-  opacity: 0;
-  transform: translateY(-8px);
-  transition: all 0.3s ease;
-}
-
-.card__input--error + .card__errorMessage {
+.card_input--error {
   opacity: 1;
   transform: translateY(0);
 }
 
-.card__separator {
-  position: relative;
-  height: 1px;
-  background: #2f353a;
-  margin: 32px 0;
-}
-
-.card__button {
+.card_button {
   font-family: inherit;
-  font-weight: var(--font-weight-bold);
+  font-size: 20px;
   position: absolute;
   margin: 10px;
   left: 87%;
   top: 88%;
   transform: translate(-50%, -50%);
   width: 48px;
-  height: 18px;
+  height: 28px;
   border-radius: 5px;
   border: none;
   background: var(--color-accent);
@@ -140,12 +119,11 @@ body {
   transition: all 0.3s ease;
 }
 
-.card__button:hover {
-  box-shadow: 0 0 20px rgba(0, 230, 195, 0.4);
+.card_button:hover {
+  box-shadow: 0 0 10px rgba(0, 230, 195, 0.4);
 }
 
-
-.card__result {
+.card_result {
   text-align: center;
   font-size: 18px;
   font-weight: var(--font-weight-extra-bold);
@@ -153,7 +131,7 @@ body {
   line-height: 1.2;
 }
 
-.card__resultNumber {
+.card_resultNumber {
   color: var(--color-accent);
   margin-right: 2px;
   margin-top: 25px;
@@ -162,7 +140,7 @@ body {
   position: relative;
 }
 
-.card__resultNumber::after {
+.card_resultNumber::after {
   content: '';
   position: absolute;
   bottom: 0;
@@ -175,7 +153,7 @@ body {
   transition: transform 0.5s ease;
 }
 
-.card__resultNumber.animate::after {
+.card_resultNumber.animate::after {
   transform: scaleX(1);
 }
 
@@ -191,12 +169,18 @@ body {
 @keyframes shake {
   0%, 100% {
     transform: translateX(0);
+    border-color: var(--color-error);
+    box-shadow: 0 0 0 2px var(--color-error);
   }
   20%, 60% {
     transform: translateX(-5px);
+    border-color: var(--color-error);
+    box-shadow: 0 0 0 2px var(--color-error);
   }
   40%, 80% {
     transform: translateX(5px);
+    border-color: var(--color-error);
+    box-shadow: 0 0 0 2px var(--color-error);
   }
 }
 
@@ -205,17 +189,17 @@ body {
     padding: 24px;
   }
 
-  .card__form {
+  .card_form {
     grid-template-columns: repeat(3, 1fr);
     gap: 8px;
   }
 
-  .card__input {
+  .card_input {
     padding: 8px;
     font-size: 16px;
   }
 
-  .card__result {
+  .card_result {
     font-size: 16px;
   }
 }
@@ -225,17 +209,17 @@ body {
     padding: 16px;
   }
 
-  .card__form {
+  .card_form {
     grid-template-columns: repeat(3, 1fr);
     gap: 4px;
   }
 
-  .card__input {
+  .card_input {
     padding: 6px;
     font-size: 14px;
   }
 
-  .card__result {
+  .card_result {
     font-size: 14px;
   }
 }
